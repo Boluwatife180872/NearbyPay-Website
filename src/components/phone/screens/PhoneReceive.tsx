@@ -27,7 +27,7 @@ export function PhoneReceive() {
       <div className="flex-1 space-y-3 overflow-hidden px-4 pt-1">
         {/* QR card */}
         <div className="flex flex-col items-center rounded-[18px] border border-line bg-white p-4">
-          <div className="rounded-[12px] border border-line p-1.5">
+          <div className="rounded-xl border border-line p-1.5">
             <QrPattern />
           </div>
           <p className="pt-2.5 text-[10.5px] font-bold text-ink">Scan to pay me</p>
