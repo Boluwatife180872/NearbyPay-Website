@@ -1,0 +1,103 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/montserrat';
+
+/*
+ * Design tokens — lifted from the NearbyPayV2 app (src/constants/app-theme.ts)
+ * so the site and the app share one visual identity:
+ *   brand #2E45F4 · gradient #3D66F7→#4634EE · hero #1C1A55→#2F2882
+ *   light page #EEF3FC · dark page #020617 · card borders #E4EAF6/#1E293B
+ */
+@theme {
+  --font-sans: 'Montserrat Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --color-brand: #2e45f4;
+  --color-brand-deep: #2036d8;
+  --color-brand-light: #5d7cff;
+  --color-gradient-from: #3d66f7;
+  --color-gradient-to: #4634ee;
+  --color-hero-from: #1c1a55;
+  --color-hero-to: #2f2882;
+  --color-night: #07061f;
+  --color-promo-from: #101446;
+  --color-promo-mid: #0a0e33;
+  --color-promo-to: #05081e;
+
+  --color-page: #eef3fc;
+  --color-page-soft: #f8fafe;
+  --color-ink: #0a1e3c;
+  --color-ink-soft: #5a6f8a;
+  --color-line: #e4eaf6;
+  --color-tint: #edf1fe;
+  --color-tint-strong: #dce4fd;
+  --color-chip: #f1f4f9;
+
+  --color-good: #16a34a;
+  --color-good-tint: #e7f8ef;
+  --color-bad: #ef4444;
+  --color-bad-tint: #fdeded;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  @apply bg-night font-sans text-ink antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #2e45f4;
+  color: #fff;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-\[float_7s_ease-in-out_infinite\] {
+    animation: none;
+  }
+}
+
+@layer utilities {
+  /* Brand gradient text (the app's signature blue→indigo) */
+  .text-brand-gradient {
+    @apply bg-gradient-to-br from-[#6d8bff] to-[#9b8cff] bg-clip-text text-transparent;
+  }
+  .text-brand-gradient-light {
+    @apply bg-gradient-to-r from-gradient-from to-gradient-to bg-clip-text text-transparent;
+  }
+
+  /* Faint blueprint grid for dark sections — echoes the app icon's grid texture */
+  .bg-grid-dark {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+  .bg-grid-light {
+    background-image:
+      linear-gradient(rgba(46, 69, 244, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(46, 69, 244, 0.05) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+  }
+}
