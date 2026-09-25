@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { BatteryFull, Wifi } from 'lucide-react';
+import { ArrowDownToLine, BatteryFull, History, House, Send, User, Wifi } from 'lucide-react';
 import { cn } from '@/lib/cn';
 
 /**
@@ -31,7 +31,7 @@ export function StatusBar({ tone = 'dark' }: { tone?: 'light' | 'dark' }) {
   return (
     <div
       className={cn(
-        'relative z-10 flex items-center justify-between px-6 pt-[11px] text-[10px] font-semibold',
+        'relative z-10 flex items-center justify-between px-6 pt-[10px] text-[10px] font-semibold',
         tone === 'light' ? 'text-white' : 'text-ink',
       )}
     >
@@ -46,6 +46,61 @@ export function StatusBar({ tone = 'dark' }: { tone?: 'light' | 'dark' }) {
         </svg>
         <Wifi size={11} strokeWidth={2.6} />
         <BatteryFull size={15} strokeWidth={2} />
+      </span>
+    </div>
+  );
+}
+
+export type PhoneTabKey = 'home' | 'receive' | 'send' | 'history' | 'profile';
+
+const PHONE_TABS: Array<{ id: PhoneTabKey; label: string; icon: typeof House } | null> = [
+  { id: 'home', label: 'Home', icon: House },
+  { id: 'receive', label: 'Receive', icon: ArrowDownToLine },
+  null, // FAB slot
+  { id: 'history', label: 'History', icon: History },
+  { id: 'profile', label: 'Profile', icon: User },
+];
+
+/**
+ * Replica of the app's custom BottomTabs (src/components/bottom-tabs.tsx):
+ * the active tab gets a filled brand tile, and the gradient Send FAB floats
+ * above the bar.
+ */
+export function PhoneTabBar({ active }: { active: PhoneTabKey }) {
+  return (
+    <div className="relative z-10 flex shrink-0 items-start justify-between border-t border-line bg-white px-3 pt-[7px] pb-[9px] shadow-[0_-6px_14px_rgba(30,43,107,0.06)]">
+      {PHONE_TABS.map((tab) =>
+        tab === null ? (
+          <span key="fab-slot" className="w-[54px]" />
+        ) : (
+          <span key={tab.id} className="flex w-[46px] flex-col items-center gap-[3px]">
+            <span
+              className={cn(
+                'flex size-[27px] items-center justify-center rounded-[10px]',
+                active === tab.id && 'bg-brand',
+              )}
+            >
+              <tab.icon
+                size={15}
+                strokeWidth={active === tab.id ? 2.4 : 1.8}
+                className={active === tab.id ? 'text-white' : 'text-[#627694]'}
+              />
+            </span>
+            <span
+              className={cn(
+                'text-[7.5px] font-medium',
+                active === tab.id ? 'text-ink' : 'text-[#627694]',
+              )}
+            >
+              {tab.label}
+            </span>
+          </span>
+        ),
+      )}
+      {/* floating Send FAB */}
+      <span className="absolute -top-[21px] left-1/2 flex size-[46px] -translate-x-1/2 items-center justify-center rounded-full bg-gradient-to-br from-gradient-from to-gradient-to shadow-[0_8px_16px_rgba(46,69,244,0.35)] ring-[3px] ring-page">
+        <span className="absolute inset-[2px] rounded-full border border-white/35" />
+        <Send size={17} className="translate-x-[1px] text-white" />
       </span>
     </div>
   );
