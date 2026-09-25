@@ -28,14 +28,28 @@ real app screens, rebuilt in `src/components/phone/screens/` (`PhoneHome`, `Phon
 crisp at any DPI and cost nothing to load. If the app's UI changes, update the replica to
 match.
 
-## Brand assets
+## Brand assets & icons
 
-`src/assets/brand/` + `public/favicon.png` are generated from the app's own artwork by
-`scripts/prepare-assets.mjs` (sharp). If artwork in the app changes, re-run:
+`src/assets/brand/` + everything in `public/` (favicon set, app icons, `og-image.png`) are
+generated from the app's own artwork by `scripts/prepare-assets.mjs` (sharp + png-to-ico).
+The script expects the NearbyPayV2 repo next to this folder (`../NearbyPayV2`) — override
+with `NEARBYPAY_APP_ROOT` if it moves. If artwork in the app changes, re-run:
 
 ```bash
 node scripts/prepare-assets.mjs
 ```
+
+The icon set covers every context where the logo shows up:
+
+| File | Where it appears |
+| ---- | ---------------- |
+| `favicon.ico` + `favicon-16/32/48.png` | Browser tab, bookmarks (tight N crop for small sizes) |
+| `apple-touch-icon.png` | iOS home screen (full-bleed tile) |
+| `icon-192.png` / `icon-512.png` | Android home screen, PWA install (`site.webmanifest`) |
+| `og-image.png` | Link previews when the site is shared (iMessage, WhatsApp, X…) |
+
+Don't add hand-made icon files to `public/` — regenerate them so everything stays in sync
+with the app's logo.
 
 ## The APK
 
