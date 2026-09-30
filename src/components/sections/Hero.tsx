@@ -66,8 +66,8 @@ export function Hero() {
             className="mt-6 max-w-lg text-[15.5px] leading-relaxed font-medium text-pretty text-white/60 sm:text-lg"
           >
             NearbyPay is the payments app built around people, not accounts. Send money to a
-            Cashtag, receive with a QR code, and see every naira clearly — even on days the
-            network isn&apos;t.
+            Cashtag, tap to pay a nearby phone over Bluetooth, receive with a QR code, and see
+            every naira clearly — even on days the network isn&apos;t.
           </motion.p>
 
           <motion.div variants={item} className="mt-9 flex flex-wrap items-center gap-4">

@@ -1,4 +1,4 @@
-import { Radio } from 'lucide-react';
+import { Bluetooth } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Reveal } from '@/components/ui/Reveal';
 import people from '@/assets/brand/people.webp';
@@ -22,8 +22,8 @@ export function WhyNearbyPay() {
               </p>
               <p>
                 NearbyPay flips the model: instead of accounts and digits, it&apos;s built around
-                people. A Cashtag, a QR code, a tap — and every naira moves with a receipt, so you
-                always know where it went.
+                people. A Cashtag, a QR code, a Bluetooth tap — and every naira moves with a
+                receipt, so you always know where it went.
               </p>
             </div>
           </Reveal>
@@ -31,10 +31,10 @@ export function WhyNearbyPay() {
           <Reveal delay={0.18}>
             <div className="mt-8 max-w-lg rounded-2xl border border-tint-strong bg-white p-5 shadow-[0_16px_40px_-28px_rgba(10,30,60,0.4)]">
               <p className="flex items-center gap-2 text-[11px] font-bold tracking-[0.18em] text-brand uppercase">
-                <Radio size={13} /> On the roadmap
+                <Bluetooth size={13} /> Works when the network doesn&apos;t
               </p>
               <p className="mt-2 text-[14.5px] leading-relaxed font-semibold text-ink/90">
-                Device-to-device transfers that keep working when the network doesn&apos;t — the
+                Tap to pay a nearby phone over Bluetooth. No data, no bars, no waiting — the
                 &ldquo;Nearby&rdquo; in NearbyPay.
               </p>
             </div>

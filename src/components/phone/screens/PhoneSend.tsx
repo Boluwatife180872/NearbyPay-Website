@@ -1,4 +1,4 @@
-import { ArrowLeft, Check, ScanLine, Send, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Bluetooth, Check, ScanLine, Send, ShieldCheck } from 'lucide-react';
 import { InitialAvatar, PhoneTabBar, StatusBar, VerifiedBadge } from '../PhoneFrame';
 
 const AMOUNTS = ['₦1,000', '₦2,000', '₦5,000', '₦10,000'] as const;
@@ -19,10 +19,13 @@ export function PhoneSend() {
           </span>
         </div>
 
-        {/* mode toggle — Nearby tag / Bank */}
-        <div className="mt-2.5 grid grid-cols-2 gap-1 rounded-full bg-chip p-1">
+        {/* mode toggle — Nearby tag / Bluetooth / Bank */}
+        <div className="mt-2.5 grid grid-cols-3 gap-1 rounded-full bg-chip p-1">
           <span className="rounded-full bg-white py-1.5 text-center text-[8.5px] font-bold text-brand shadow-sm">
             To Nearby Tag
+          </span>
+          <span className="flex items-center justify-center gap-0.5 py-1.5 text-center text-[8.5px] font-semibold text-ink-soft">
+            <Bluetooth size={8} /> Bluetooth
           </span>
           <span className="py-1.5 text-center text-[8.5px] font-semibold text-ink-soft">To Bank</span>
         </div>

@@ -1,4 +1,4 @@
-import { Copy, Gift, History, Landmark, QrCode, Send, ShieldCheck } from 'lucide-react';
+import { Bluetooth, Copy, Gift, History, Landmark, QrCode, Send, ShieldCheck } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Reveal } from '@/components/ui/Reveal';
@@ -108,9 +108,21 @@ export function Features() {
 
           <Reveal delay={0.05}>
             <FeatureCard
-              icon={History}
-              title="History you can read"
-              copy="Grouped by day like a chat log, searchable, filterable — with full details on every row."
+              icon={Bluetooth}
+              title="Tap to pay over Bluetooth"
+              copy="Two phones, one tap, no network needed. NearbyPay pairs over Bluetooth and moves the money even when the bars are empty."
+              visual={
+                <div className="mt-6 flex items-center gap-2.5">
+                  <span className="flex size-8 items-center justify-center rounded-full bg-brand/15 text-brand-light ring-1 ring-brand/30 ring-inset">
+                    <Bluetooth size={14} />
+                  </span>
+                  <span className="h-px flex-1 bg-gradient-to-r from-brand/60 to-brand/20" />
+                  <span className="flex size-8 items-center justify-center rounded-full bg-gradient-to-br from-gradient-from to-gradient-to text-white">
+                    <Send size={13} />
+                  </span>
+                  <span className="text-[11px] font-semibold text-white/45">no data needed</span>
+                </div>
+              }
             />
           </Reveal>
 
@@ -122,7 +134,15 @@ export function Features() {
             />
           </Reveal>
 
-          <Reveal delay={0.15} className="md:col-span-2">
+          <Reveal delay={0.15}>
+            <FeatureCard
+              icon={History}
+              title="History you can read"
+              copy="Grouped by day like a chat log, searchable, filterable — with full details on every row."
+            />
+          </Reveal>
+
+          <Reveal delay={0.2}>
             <FeatureCard
               icon={Gift}
               title="Daily check-in rewards"
@@ -140,7 +160,7 @@ export function Features() {
             />
           </Reveal>
 
-          <Reveal delay={0.2}>
+          <Reveal delay={0.25}>
             <FeatureCard
               icon={ShieldCheck}
               title="Locked with your PIN"

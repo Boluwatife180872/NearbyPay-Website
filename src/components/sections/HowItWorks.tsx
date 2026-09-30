@@ -13,7 +13,7 @@ const STEPS = [
     n: '02',
     icon: ScanLine,
     title: 'Find your person',
-    copy: 'Search their Cashtag, scan their QR code, or send straight to any Nigerian bank account.',
+    copy: 'Search their Cashtag, scan their QR code, tap their phone over Bluetooth, or send straight to any Nigerian bank account.',
   },
   {
     n: '03',

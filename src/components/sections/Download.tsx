@@ -26,7 +26,7 @@ export function Download() {
             </h2>
             <p className="mt-4 max-w-lg text-[15px] leading-relaxed font-medium text-pretty text-white/60 sm:text-base">
               NearbyPay is rolling out on Android first. Grab the APK, install it, and start
-              sending money the closer way.
+              sending money the closer way — by Cashtag, QR code or Bluetooth tap.
             </p>
           </Reveal>
 
@@ -35,6 +35,8 @@ export function Download() {
               {site.apkUrl ? (
                 <a
                   href={site.apkUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-gradient-from to-gradient-to px-7 py-3.5 text-[15px] font-bold text-white shadow-[0_16px_40px_-12px_rgba(61,102,247,0.75)] transition-transform duration-200 hover:scale-[1.03] active:scale-[0.98]"
                 >
                   <DownloadIcon size={17} />

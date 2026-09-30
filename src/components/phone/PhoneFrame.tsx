@@ -9,7 +9,7 @@ import { cn } from '@/lib/cn';
  */
 export function PhoneFrame({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <div className={cn('relative w-[290px] select-none', className)}>
+    <div className={cn('relative w-[290px] shrink-0 select-none', className)}>
       {/* side buttons */}
       <div className="absolute top-[104px] -right-[2.5px] h-14 w-[3px] rounded-full bg-[#1b1a33]" />
       <div className="absolute top-[168px] -right-[2.5px] h-9 w-[3px] rounded-full bg-[#1b1a33]" />
@@ -68,15 +68,15 @@ const PHONE_TABS: Array<{ id: PhoneTabKey; label: string; icon: typeof House } |
  */
 export function PhoneTabBar({ active }: { active: PhoneTabKey }) {
   return (
-    <div className="relative z-10 flex shrink-0 items-start justify-between border-t border-line bg-white px-3 pt-[7px] pb-[9px] shadow-[0_-6px_14px_rgba(30,43,107,0.06)]">
+    <div className="relative z-10 grid shrink-0 grid-cols-5 items-start border-t border-line bg-white px-1.5 pt-[7px] pb-[9px] shadow-[0_-6px_14px_rgba(30,43,107,0.06)]">
       {PHONE_TABS.map((tab) =>
         tab === null ? (
-          <span key="fab-slot" className="w-[54px]" />
+          <span key="fab-slot" aria-hidden className="h-full" />
         ) : (
-          <span key={tab.id} className="flex w-[46px] flex-col items-center gap-[3px]">
+          <span key={tab.id} className="flex min-w-0 flex-col items-center gap-[3px]">
             <span
               className={cn(
-                'flex size-[27px] items-center justify-center rounded-[10px]',
+                'flex size-[27px] shrink-0 items-center justify-center rounded-[10px]',
                 active === tab.id && 'bg-brand',
               )}
             >
@@ -88,7 +88,7 @@ export function PhoneTabBar({ active }: { active: PhoneTabKey }) {
             </span>
             <span
               className={cn(
-                'text-[7.5px] font-medium',
+                'max-w-full truncate text-[7.5px] leading-tight font-medium',
                 active === tab.id ? 'text-ink' : 'text-[#627694]',
               )}
             >
